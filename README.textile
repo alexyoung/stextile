@@ -10,19 +10,19 @@ h3. Usage
 
 In a Node project:
 
-<code>
+<pre>
 var textile = require('stextile');
 
 textile('h1. A header');
-</code>
+</pre>
 
 In the shell:
 
-<code>
-stextile file.textile
+<pre>
+$ stextile file.textile
 
 # HTML printed to stdout
-</code>
+</pre>
 
 h3. TO-DO
 
