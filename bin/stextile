@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+
+var textile;
+
+try {
+  textile = require('../lib/stextile');
+} catch (err) {
+  textile = require('stextile');
+}
+
+var args = process.argv.slice(2)
+	, files = [];
+
+while (args.length) {
+  arg = args.shift();
+  switch (arg) {
+    case '-h':
+    case '--help':
+      console.log('TO-DO');
+      process.exit(1);
+		default:
+			files.push(arg);
+	}
+}
+
+if (files.length) {
+	var fs = require('fs');
+
+	while (files.length) {
+		var file = files.shift();
+		fs.readFile(file, 'utf8', function(err, data) {
+			if (err) throw(err);
+			console.log(textile(data));
+		});
+	}
+} else {
+	var buf = '';
+	process.stdin.setEncoding('utf8');
+	process.stdin.on('data', function(chunk) {
+		buf += chunk;
+	}).on('end', function() {
+		console.log(textile(buf));
+	}).resume();
+}

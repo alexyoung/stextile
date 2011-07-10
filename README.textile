@@ -1,0 +1,39 @@
+h3. stextile
+
+A simple "textile":http://www.textism.com/tools/textile/index.php parser, designed to be good enough to parse the simple formatting used in DailyJS articles.
+
+h3. Installation
+
+<code>npm install stextile</code>
+
+h3. Usage
+
+In a Node project:
+
+<code>
+var textile = require('stextile');
+
+textile('h1. A header');
+</code>
+
+In the shell:
+
+<code>
+stextile file.textile
+
+# HTML printed to stdout
+</code>
+
+h3. TO-DO
+
+* Footnotes
+* Acronyms
+* Benchmarks
+* Optimisation
+* Attributes for inline elements
+* span with %
+* Indentation
+
+h3. License
+
+The MIT License.
