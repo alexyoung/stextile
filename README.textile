@@ -1,6 +1,6 @@
 h3. stextile
 
-A simple "textile":http://www.textism.com/tools/textile/index.php parser, designed to be good enough to parse the simple formatting used in DailyJS articles.
+A simple "textile":http://www.textism.com/tools/textile/index.php parser, designed to be good enough to parse the formatting used in DailyJS articles.
 
 h3. Installation
 
