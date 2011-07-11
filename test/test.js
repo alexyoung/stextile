@@ -34,6 +34,9 @@ assert.equal('<p>Some <em>emphasised text</em> here</p>\n', textile('Some _empha
 // Unordered lists
 assert.equal('<ul>\n<li>A list item</li>\n</ul>\n', textile('* A list item\n'));
 
+// Lists with links
+assert.equal('<ul>\n<li><a href="http://dailyjs.com/2010/11/01/node-tutorial/">Part 1: Introduction</a></li>\n</ul>\n', textile('* "Part 1: Introduction":http://dailyjs.com/2010/11/01/node-tutorial/\n'));
+
 // Blockquotes
 assert.equal('<blockquote>A quote</blockquote>\n', textile('bq. A quote\n'));
 assert.equal('<blockquote class="example">A quote</blockquote>\n', textile('bq(example). A quote\n'));

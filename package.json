@@ -1,7 +1,7 @@
 {
   "name": "stextile",
   "description": "Simple textile parser",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Alex R. Young <a@alexyoung.org>",
   "repository": "git://github.com/alexyoung/stextile",
   "main": "./lib/stextile.js",
