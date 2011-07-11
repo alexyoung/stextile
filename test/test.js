@@ -36,6 +36,10 @@ assert.equal('<ul>\n<li>A list item</li>\n</ul>\n', textile('* A list item\n'));
 
 // Lists with links
 assert.equal('<ul>\n<li><a href="http://dailyjs.com/2010/11/01/node-tutorial/">Part 1: Introduction</a></li>\n</ul>\n', textile('* "Part 1: Introduction":http://dailyjs.com/2010/11/01/node-tutorial/\n'));
+assert.equal(
+  '<ul>\n<li><a href=\"http://dailyjs.com/2010/11/01/node-tutorial/\">Part 1: Introduction</a>  </li>\n<li><a href=\"http://dailyjs.com/2010/11/08/node-tutorial-2/\">Part 2: Installation and Skeleton App</a>, source code commit: <a href=\"https://github.com/alexyoung/nodepad/commit/4ea936b4b426012528fc722c7576391b48d5a0b7\">4ea936b</a>',
+  textile('* "Part 1: Introduction":http://dailyjs.com/2010/11/01/node-tutorial/\n* "Part 2: Installation and Skeleton App":http://dailyjs.com/2010/11/08/node-tutorial-2/, source code commit: "4ea936b":https://github.com/alexyoung/nodepad/commit/4ea936b4b426012528fc722c7576391b48d5a0b7')
+);
 
 // Blockquotes
 assert.equal('<blockquote>A quote</blockquote>\n', textile('bq. A quote\n'));
