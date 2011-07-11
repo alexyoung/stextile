@@ -34,6 +34,11 @@ h3. TO-DO
 * span with %
 * Indentation
 
+h3. Notes
+
+https://github.com/jgm/peg-markdown/blob/master/markdown_parser.leg
+https://github.com/jgarber/redcloth/blob/master/ragel/redcloth_scan.rl
+
 h3. License
 
 The MIT License.
