@@ -60,3 +60,5 @@ assert.equal('<p>&#8216;It&#8217;s clear that the fox said &#8220;hello&#8221;.&
 assert.equal('<pre>This !is!\n code</pre>\n', textile('<pre>This !is!\n code</pre>'));
 assert.equal('<p><code>This is code</code></p>\n', textile('<code>This is code</code>'));
 assert.equal('<p><code>This !is! code</code></p>\n', textile('<code>This !is! code</code>'));
+assert.equal('<pre class="prettyprint lang-js">This "is"\n \'code\'</pre>\n', textile('<pre class="prettyprint lang-js">This "is"\n \'code\'</pre>'));
+assert.equal('<pre class="prettyprint lang-js">\nThis "is"\n \'code\'\n</pre>\n', textile('<pre class="prettyprint lang-js">\nThis "is"\n \'code\'\n</pre>'));
