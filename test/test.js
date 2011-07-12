@@ -62,3 +62,9 @@ assert.equal('<p><code>This is code</code></p>\n', textile('<code>This is code</
 assert.equal('<p><code>This !is! code</code></p>\n', textile('<code>This !is! code</code>'));
 assert.equal('<pre class="prettyprint lang-js">This "is"\n \'code\'</pre>\n', textile('<pre class="prettyprint lang-js">This "is"\n \'code\'</pre>'));
 assert.equal('<pre class="prettyprint lang-js">\nThis "is"\n \'code\'\n</pre>\n', textile('<pre class="prettyprint lang-js">\nThis "is"\n \'code\'\n</pre>'));
+
+// Images
+assert.equal('<p><img src="/example.png" alt="" /></p>\n', textile('!/example.png!'));
+
+// With alt attributes
+assert.equal('<p><img src="/example.png" alt="alt attr" /></p>\n', textile('!/example.png(alt attr)!'));
