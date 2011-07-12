@@ -68,3 +68,6 @@ assert.equal('<p><img src="/example.png" alt="" /></p>\n', textile('!/example.pn
 
 // With alt attributes
 assert.equal('<p><img src="/example.png" alt="alt attr" /></p>\n', textile('!/example.png(alt attr)!'));
+
+// Multiple images
+assert.equal('<p><img src="/images/posts/cluster_live.png" alt="" /></p>\n<p>More text</p>\n<p><img src="/example.png" alt="" /></p>\n', textile('!/images/posts/cluster_live.png!\nMore text\n!/example.png!'));
