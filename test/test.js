@@ -78,5 +78,12 @@ assert.equal('<p>OMG@!?!</p>\n', textile('OMG@!?!\n'));
 // Similar but valid
 assert.equal('<p><img src="?img=example.png" alt="" /></p>\n', textile('!?img=example.png!'));
 
-// Don't match inside tags
+// A more involved example: Don't match inside tags
 assert.equal('<p><img src="http://www.assoc-amazon.com/e/ir?t=da07e-20&l=as2&o=1&a=0596517742" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>\n', textile('<img src="http://www.assoc-amazon.com/e/ir?t=da07e-20&l=as2&o=1&a=0596517742" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />'));
+
+var imgTagsTextile = 'I just finished reading "OOP The Good Parts: Message Passing, Duck Typing, Object Composition, and not Inheritance":http://fitzgeraldnick.com/weblog/39/ by Nick Fitzgerald.  Obvious references to Douglas Crockford\'s <a href="http://www.amazon.com/gp/product/0596517742?ie=UTF8&tag=da07e-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0596517742">JavaScript: The Good Parts</a><img src="http://www.assoc-amazon.com/e/ir?t=da07e-20&l=as2&o=1&a=0596517742" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> aside, the article builds on some interesting points by authors like Raganwald that will resonate with many DailyJS readers:'
+
+var imgTagsHTML = '<p>I just finished reading <a href="http://fitzgeraldnick.com/weblog/39/">OOP The Good Parts: Message Passing, Duck Typing, Object Composition, and not Inheritance</a> by Nick Fitzgerald.  Obvious references to Douglas Crockford&#8217;s <a href="http://www.amazon.com/gp/product/0596517742?ie=UTF8&tag=da07e-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0596517742">JavaScript: The Good Parts</a><img src="http://www.assoc-amazon.com/e/ir?t=da07e-20&l=as2&o=1&a=0596517742" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> aside, the article builds on some interesting points by authors like Raganwald that will resonate with many DailyJS readers:</p>\n';
+
+assert.equal(imgTagsHTML, textile(imgTagsTextile));
+
