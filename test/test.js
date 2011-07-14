@@ -71,3 +71,12 @@ assert.equal('<p><img src="/example.png" alt="alt attr" /></p>\n', textile('!/ex
 
 // Multiple images
 assert.equal('<p><img src="/images/posts/cluster_live.png" alt="" /></p>\n<p>More text</p>\n<p><img src="/example.png" alt="" /></p>\n', textile('!/images/posts/cluster_live.png!\nMore text\n!/example.png!'));
+
+// Not a valid image
+assert.equal('<p>OMG@!?!</p>\n', textile('OMG@!?!\n'));
+
+// Similar but valid
+assert.equal('<p><img src="?img=example.png" alt="" /></p>\n', textile('!?img=example.png!'));
+
+// Don't match inside tags
+assert.equal('<p><img src="http://www.assoc-amazon.com/e/ir?t=da07e-20&l=as2&o=1&a=0596517742" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>\n', textile('<img src="http://www.assoc-amazon.com/e/ir?t=da07e-20&l=as2&o=1&a=0596517742" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />'));
