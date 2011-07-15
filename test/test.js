@@ -11,6 +11,14 @@ assert.equal('<h3>Hello World</h3>\n', textile('h3. Hello World'));
 assert.equal('<h3>Hello World</h3>\n<h4>Deeper</h4>\n', textile('h3. Hello World\nh4. Deeper'));
 assert.equal('<h3>Hello World</h3>\n<p>Hello again.</p>\n', textile('h3. Hello World\n\nHello again.\n'));
 
+// Preformatted that got confused with links
+assert.equal("<p>some code: <code>'{\"key\":\"value\"}'</code>, and this is not</p>\n", textile('some code: <code>\'{"key":"value"}\'</code>, and this is not'));
+assert.equal("<p><code>'{\"key\":\"value\"}'</code>,</p>\n", textile('<code>\'{"key":"value"}\'</code>,'));
+assert.equal("<p><code>'{\"key (example)\":\"value\"}'</code>,</p>\n", textile('<code>\'{"key (example)":"value"}\'</code>,'));
+
+// Links
+assert.equal('<p>This is a link: <a href="http://example.com">Example</a> and sometimes another <a href="http://example.com/2">example 2</a></p>\n', textile('This is a link: "Example":http://example.com and sometimes another "example 2":http://example.com/2'));
+
 // Links with fullstops
 assert.equal('<p><a href="http://example.com">Example</a>.</p>\n', textile('"Example":http://example.com.'));
 
@@ -62,6 +70,16 @@ assert.equal('<p><code>This is code</code></p>\n', textile('<code>This is code</
 assert.equal('<p><code>This !is! code</code></p>\n', textile('<code>This !is! code</code>'));
 assert.equal('<pre class="prettyprint lang-js">This "is"\n \'code\'</pre>\n', textile('<pre class="prettyprint lang-js">This "is"\n \'code\'</pre>'));
 assert.equal('<pre class="prettyprint lang-js">\nThis "is"\n \'code\'\n</pre>\n', textile('<pre class="prettyprint lang-js">\nThis "is"\n \'code\'\n</pre>'));
+assert.equal(
+  '<p>a link <a href="http://example.com">here</a> and then weird code <code>\'{"key":"value"}\'</code> etc.</p>\n',
+  textile('a link "here":http://example.com and then weird code <code>\'{"key":"value"}\'</code> etc.')
+);
+
+var codeAndLinks = 'I made <code>then</code> just defer to the current promise object, and used <code>apply</code> to call it with <code>arguments</code>.  If any beginners find this puzzling, give "arguments":https://developer.mozilla.org/en/JavaScript/Reference/functions_and_function_scope/arguments and "apply":https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/apply a read on MDN.  These language features are extremely useful for making flexible APIs.';
+
+var codeAndLinksHTML = '<p>I made <code>then</code> just defer to the current promise object, and used <code>apply</code> to call it with <code>arguments</code>.  If any beginners find this puzzling, give <a href="https://developer.mozilla.org/en/JavaScript/Reference/functions_and_function_scope/arguments">arguments</a> and <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/apply">apply</a> a read on MDN.  These language features are extremely useful for making flexible APIs.</p>\n';
+
+assert.equal(codeAndLinksHTML, textile(codeAndLinks));
 
 // Images
 assert.equal('<p><img src="/example.png" alt="" /></p>\n', textile('!/example.png!'));
