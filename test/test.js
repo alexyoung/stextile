@@ -17,7 +17,7 @@ assert.equal("<p><code>'{\"key\":\"value\"}'</code>,</p>\n", textile('<code>\'{"
 assert.equal("<p><code>'{\"key (example)\":\"value\"}'</code>,</p>\n", textile('<code>\'{"key (example)":"value"}\'</code>,'));
 
 // Links
-assert.equal('<p>This is a link: <a href="http://example.com">Example</a> and sometimes another <a href="http://example.com/2">example 2</a></p>\n', textile('This is a link: "Example":http://example.com and sometimes another "example 2":http://example.com/2'));
+assert.equal('<p>This is a link: <a href="http://example.com/a_and_b">Example</a> and sometimes another <a href="http://example.com/2">example 2</a></p>\n', textile('This is a link: "Example":http://example.com/a_and_b and sometimes another "example 2":http://example.com/2'));
 
 // Links with fullstops
 assert.equal('<p><a href="http://example.com">Example</a>.</p>\n', textile('"Example":http://example.com.'));
@@ -104,4 +104,17 @@ var imgTagsTextile = 'I just finished reading "OOP The Good Parts: Message Passi
 var imgTagsHTML = '<p>I just finished reading <a href="http://fitzgeraldnick.com/weblog/39/">OOP The Good Parts: Message Passing, Duck Typing, Object Composition, and not Inheritance</a> by Nick Fitzgerald.  Obvious references to Douglas Crockford&#8217;s <a href="http://www.amazon.com/gp/product/0596517742?ie=UTF8&tag=da07e-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0596517742">JavaScript: The Good Parts</a><img src="http://www.assoc-amazon.com/e/ir?t=da07e-20&l=as2&o=1&a=0596517742" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> aside, the article builds on some interesting points by authors like Raganwald that will resonate with many DailyJS readers:</p>\n';
 
 assert.equal(imgTagsHTML, textile(imgTagsTextile));
+
+assert.equal(
+  '<p><a href="http://alexyoung.org/terminal_cheat_sheet.pdf"><img src="/images/terminal_cheat_sheet.png" alt="Mac-friendly terminal cheat sheet" /></a></p>\n',
+  textile('<a href="http://alexyoung.org/terminal_cheat_sheet.pdf"><img src="/images/terminal_cheat_sheet.png" alt="Mac-friendly terminal cheat sheet" /></a>')
+);
+
+// Block-level tags should be left alone
+assert.equal(
+  '<blockquote>This is a quote</blockquote>\n',
+  textile('<blockquote>This is a quote</blockquote>\n')
+);
+
+// TODO: Links with images
 
