@@ -87,6 +87,12 @@ assert.equal('<p><img src="/example.png" alt="" /></p>\n', textile('!/example.pn
 // With alt attributes
 assert.equal('<p><img src="/example.png" alt="alt attr" /></p>\n', textile('!/example.png(alt attr)!'));
 
+// Links with images
+assert.equal(
+  '<p><a href="/images/test.png"><img src="/images/test-thumb.png" alt="" /></a></p>\n',
+  textile('"!/images/test-thumb.png!":/images/test.png')
+);
+
 // Multiple images
 assert.equal('<p><img src="/images/posts/cluster_live.png" alt="" /></p>\n<p>More text</p>\n<p><img src="/example.png" alt="" /></p>\n', textile('!/images/posts/cluster_live.png!\nMore text\n!/example.png!'));
 
@@ -116,5 +122,8 @@ assert.equal(
   textile('<blockquote>This is a quote</blockquote>\n')
 );
 
-// TODO: Links with images
+assert.equal(
+  '<blockquote>\nThis is a quote\n</blockquote>\n',
+  textile('<blockquote>\nThis is a quote\n</blockquote>\n')
+);
 
