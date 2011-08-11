@@ -99,6 +99,11 @@ assert.equal(
   textile('!/images/constants_are_changing.png!')
 );
 
+assert.equal(
+  '<p><img src="http://www.box.net/shared/static/p0kuthy8g8.gif" alt="" /></p>\n',
+  textile('!http://www.box.net/shared/static/p0kuthy8g8.gif!')
+);
+
 // Multiple images
 assert.equal('<p><img src="/images/posts/cluster_live.png" alt="" /></p>\n<p>More text</p>\n<p><img src="/example.png" alt="" /></p>\n', textile('!/images/posts/cluster_live.png!\nMore text\n!/example.png!'));
 
