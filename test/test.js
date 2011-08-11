@@ -93,6 +93,12 @@ assert.equal(
   textile('"!/images/test-thumb.png!":/images/test.png')
 );
 
+// Images with things that look like em/strong shorthand -- the trick is to parse images first
+assert.equal(
+  '<p><img src="/images/constants_are_changing.png" alt="" /></p>\n',
+  textile('!/images/constants_are_changing.png!')
+);
+
 // Multiple images
 assert.equal('<p><img src="/images/posts/cluster_live.png" alt="" /></p>\n<p>More text</p>\n<p><img src="/example.png" alt="" /></p>\n', textile('!/images/posts/cluster_live.png!\nMore text\n!/example.png!'));
 
