@@ -1,9 +1,10 @@
-TESTS = test/*.js
-
 sample:
-	@./bin/stextile test/fixtures/sample.textile	 
+	@./bin/stextile test/fixtures/sample.textile
 
 test:
-	node $(TESTS)
+	node test/test.js
+
+benchmark:
+	node test/benchmark.js
 
 .PHONY: test
