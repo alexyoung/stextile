@@ -59,6 +59,8 @@ tests = {
   'test bold': function() {
     assert.equal('<p>Some <strong>bold text</strong> here</p>\n', textile('Some *bold text* here'));
     assert.equal('<p>Some <em>emphasised text</em> here</p>\n', textile('Some _emphasised text_ here'));
+    assert.equal('<p>Some <ins>added text</ins> here</p>\n', textile('Some +added text+ here'));
+    assert.equal('<p>Some <del>removed text</del> here</p>\n', textile('Some -removed text- here'));
   },
 
   'test unordered lists': function() {
